@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<link rel="stylesheet" href="assets/stylesheets/style.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Yonseilikelion</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+	<body>
+	  	<header>
+		    <nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <div class="navbar-header col-md-4">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <div>
+			      	<a class="nav_name" href="#"><h3><%=image_tag "2.png", class:"header-yonsei-image", alt:"yonsei"%>멋쟁이 사자처럼</h3></a>
+			      </div>
+			    </div>
+			    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav navbar-right">
+			        <li><a href="#">Intro</a></li>
+			        <li><a href="#">About us</a></li>
+			        <li><a href="#">Apply</a></li>
+			        <li><a href="#">Sponser</a></li>
+			        <% unless user_signed_in? %>
+			        <li>
+	                    <a class="nav-link" href="/users/sign_in">
+	                      <span class="btn btn-warning">
+	                        로그인
+	                      </span>
+	                    </a>
+	                </li>
+	                <% else %>
+	                <li><a href="/home/excel">회계</a></li>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.email%> <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">과제 제출 </a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/users/sign_out">로그 아웃</a></li>
+			          </ul>
+			        </li>
+	                <% end %>
+			      </ul>
+			    </div>
+			  </div>
+			</nav>
+	  	</header>
+    <%= yield %>
+    	<footer class="footer-distributed" style="margin-top:0px">
+			<!-- <div class="footer-right" style="position:relative; bottom:0px; z-index:1">
+				<a href="https://yonsei.likelion.net" target="_blank"><%= image_tag "연세대학교.png", class:"img-responsive", style:"width:100%;"%></a>
+			</div> -->
+	         
+			<div class="footer-left" style="position:relative; bottom:0px;">
+	        <br><br>
+				<p class="footer-links" style="text-align: center;">
+					<a href="#">About Us</a>
+					·
+					 <a data-popup-open="popup-1" href="#">Contact Us</a>
+
+	              	<div class="popup" data-popup="popup-1">
+	                  	<div class="popup-inner">
+	                      	Facebook : facebook.com/yonsei.likelion <br>
+	                      	E-mail : yonseilikelion@gmail.com 
+	                      	<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+	                  	</div>
+	              	</div>
+				</p>
+
+				<p style="color:orange; text-align:center;">Copyright © 멋쟁이사자처럼 at 연세대 2016</p>
+			</div>
+	    </footer>
+  	</body>
+</html>
